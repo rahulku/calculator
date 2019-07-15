@@ -4,7 +4,6 @@
 /****************************Module*Header***********************************\
 * Module Name: SCICOMM.C
 *
-* Module Description:
 *
 *
 * Author:
