@@ -49,43 +49,6 @@ namespace
 //
 // When it is discovered by the state machine that at this point the input is not valid (eg. "1+)"), we want to proceed as though this input never
 // occurred and may be some feedback to user like Beep. The rest of input can then continue by just ignoring this command.
-void CCalcEngine::HandleErrorCommand(OpCode idc)
-{
-    if (!IsGuiSettingOpCode(idc))
-    {
-        // We would have saved the prev command. Need to forget this state
-        m_nTempCom = m_nLastCom;
-    }
-}
-
-void CCalcEngine::HandleMaxDigitsReached()
-{
-    if (nullptr != m_pCalcDisplay)
-    {
-        m_pCalcDisplay->MaxDigitsReached();
-    }
-}
-
-void CCalcEngine::ClearTemporaryValues()
-{
-    m_bInv = false;
-    m_input.Clear();
-    m_bRecord = true;
-    CheckAndAddLastBinOpToHistory();
-    DisplayNum();
-    m_bError = false;
-}
-
-void CCalcEngine::ProcessCommand(OpCode wParam)
-{
-    if (wParam == IDC_SET_RESULT)
-    {
-        wParam = IDC_RECALL;
-        m_bSetCalcState = true;
-    }
-
-    ProcessCommandWorker(wParam);
-}
 
 void CCalcEngine::ProcessCommandWorker(OpCode wParam)
 {
