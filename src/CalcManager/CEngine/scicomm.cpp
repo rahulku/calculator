@@ -49,7 +49,7 @@ namespace
 //
 // When it is discovered by the state machine that at this point the input is not valid (eg. "1+)"), we want to proceed as though this input never
 // occurred and may be some feedback to user like Beep. The rest of input can then continue by just ignoring this command.
-void CCalcEngine::HandleErrorCommand(OpCode idc)
+void CCalcEngine::HandleErrorCommand(OpCode idc, int type)
 {
     if (!IsGuiSettingOpCode(idc))
     {
